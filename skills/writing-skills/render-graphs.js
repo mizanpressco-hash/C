@@ -54,7 +54,7 @@ function combineGraphs(blocks, skillName) {
     // Wrap each subgraph in a cluster for visual grouping
     return `  subgraph cluster_${i} {
     label="${block.name}";
-    ${body.split('\n').map(line => '  ' + line).join('\n')}
+    ${body.replace(/^/gm, '  ')}
   }`;
   });
 

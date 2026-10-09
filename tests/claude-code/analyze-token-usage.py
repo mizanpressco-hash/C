@@ -54,7 +54,7 @@ def analyze_main_session(filepath):
                         if subagent_usage[agent_id]['description'] is None:
                             prompt = result.get('prompt', '')
                             # Extract first line as description
-                            first_line = prompt.split('\n')[0] if prompt else f"agent-{agent_id}"
+                            first_line = prompt.partition('\n')[0] if prompt else f"agent-{agent_id}"
                             if first_line.startswith('You are '):
                                 first_line = first_line[8:]  # Remove "You are "
                             subagent_usage[agent_id]['description'] = first_line[:60]

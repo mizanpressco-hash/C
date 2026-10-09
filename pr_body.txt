@@ -1,0 +1,4 @@
+🎯 **What:** Removed the unused `configDir` variable in `SuperpowersPlugin` along with its related unused variables (`envConfigDir`, `homeDir`), the `normalizePath` helper function, and the `os` module import.
+💡 **Why:** These variables and functions were initialized but their values were never referenced anywhere in the function scope or file. Removing dead code improves maintainability, reduces cognitive load for future developers, and cleans up the codebase without affecting any functionality.
+✅ **Verification:** I confirmed that the variables and functions being removed were completely unused. I ran `node -c .opencode/plugins/superpowers.js` to ensure the syntax remains valid after the changes, and confirmed it introduces no side effects.
+✨ **Result:** The `SuperpowersPlugin` is now cleaner and easier to read without the clutter of unused code and unnecessary imports.

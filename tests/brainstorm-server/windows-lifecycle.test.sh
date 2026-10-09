@@ -131,6 +131,9 @@ if [[ "$is_windows" == "true" ]]; then
   case "${OSTYPE:-}" in
     msys*|cygwin*|mingw*) TEST_OWNER_PID="" ;;
   esac
+  if [[ -n "${MSYSTEM:-}" ]]; then
+    TEST_OWNER_PID=""
+  fi
 
   if [[ -z "$TEST_OWNER_PID" ]]; then
     pass "OWNER_PID is empty on Windows after fix"

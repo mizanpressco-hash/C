@@ -107,6 +107,14 @@ if [[ -z "$OWNER_PID" || "$OWNER_PID" == "1" ]]; then
   OWNER_PID="$PPID"
 fi
 
+# The fix: clear on Windows
+case "${OSTYPE:-}" in
+  msys*|cygwin*|mingw*) OWNER_PID="" ;;
+esac
+if [[ -n "${MSYSTEM:-}" ]]; then
+  OWNER_PID=""
+fi
+
 # Foreground mode for environments that reap detached/background processes.
 if [[ "$FOREGROUND" == "true" ]]; then
   echo "$$" > "$PID_FILE"
